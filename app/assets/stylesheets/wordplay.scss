@@ -1,5 +1,57 @@
+/* -------------------------------------------------------------------
+ * Colors
+ * -----------------------------------------------------------------*/
+$primary-color:    #C00000; // cherry red
+$dark-color:       #262626; // charcoal
+$light-color:      #A4A29A; // burnt cream
+$ultralight-color: #E3E2DD; // singed cream
+
+$background-color: #FCFAF2; // cream
+
+
+/* -------------------------------------------------------------------
+ * Global values
+ * -----------------------------------------------------------------*/
+$global-radius: 4px;
+
+
+/* -------------------------------------------------------------------
+ * Tyopgraphy
+ * -----------------------------------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Abril+Fatface|Volkhov:400,400italic);
+
+$display-font: 'Abril Fatface', cursive;
+$serif-font:    'Volkhov', serif;
+
+p {margin-bottom: 1.3em;}
+
+h1, h2, h3, h4 {
+  margin: 1.414em 0 0.5em;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+h1 {
+  font-family: $display-font;
+  margin-top: 0;
+  font-size: 2.074em;
+}
+
+h2 {font-size: 1.728em;}
+
+h3 {font-size: 1.44em;}
+
+h4 {font-size: 1.2em;}
+
+small, .font_small {font-size: 0.833em;}
+
+
 body {
-  background-color: #FCFAF2;
+  background-color: $background-color;  
+  font-family: $serif-font;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #333;
 }
 
 .awful-play {
@@ -7,19 +59,19 @@ body {
     text-align: center;
   }
 
-  h1 {
-    font-weight: bold;
-  }
-
   h4 {
-    color: #C70E17;
+    color: $primary-color;
+    margin-top: 0.5em;
   }
 
   form {
-    color: #A4A29B;
+    & h3{
+      font-family: $display-font;
+    }
+    color: $light-color;
 
-    border: 1px solid #E3E2DD;
-    border-radius: 4px;
+    border: 1px solid $ultralight-color;
+    border-radius: $global-radius;
     margin-top: 30px;
     padding: 0px 20px 20px;
 
@@ -34,32 +86,35 @@ body {
         text-indent: 9px;
 
         &.error {
-          color: #CE0A24;
+          color: $primary-color;
         }
       }
 
       input {
-        border-radius: 3px;
-        border: 1px solid #A4A29B;
+        border-radius: $global-radius;
+        border: 1px solid $light-color;
         -webkit-box-shadow:
-          inset 0 0 8px  rgba(0,0,0,0.1),
-                0 0 16px rgba(0,0,0,0.1);
+          inset 0 0 8px  rgba( $light-color, .25 ),
+                0 0 16px rgba( $light-color, .25 );
         -moz-box-shadow:
-          inset 0 0 8px  rgba(0,0,0,0.1),
-                0 0 16px rgba(0,0,0,0.1);
+          inset 0 0 8px  rgba( $light-color, .25 ),
+                0 0 16px rgba( $light-color, .25 );
         box-shadow:
-          inset 0 0 8px  rgba(0,0,0,0.1),
-                0 0 16px rgba(0,0,0,0.1);
+          inset 0 0 8px  rgba( $light-color, .25 ),
+                0 0 16px rgba( $light-color, .25 );
         background: rgba(255,255,255,0.5);
-        color: black;
+        color: $dark-color;
         font-size: 18px;
         font-style: italic;
         padding: 9px 0;
         text-indent: 8px;
         width: 100%;
+        input:focus { 
+            background-color: yellow;
+        }
 
         &.error {
-          color: #CE0A24;
+          color: $primary-color;
           text-decoration: line-through;
         }
       }
@@ -67,18 +122,20 @@ body {
   }
 
   button {
-    background: #A9A7A1;
+    background: $light-color;
     border: 0px;
-    color: #FCFAF2;
+    color: $dark-color;
     display: block;
     font-size: 17px;
     font-weight: bold;
     margin: 36px auto;
     padding: 10px 17px;
     text-align: center;
+    border-radius: 0;
 
     &.ready {
-      background: #CE0A24;
+      background: $light-color;
+      color: $background-color;
     }
   }
 }
