@@ -76,19 +76,19 @@ angular.module('awfulWordplayApp').controller('MainCtrl', [
 
         $scope.errorType = function(type) {
             var text = '';
-            if(type === 'noun'){
+            if(type.toLowerCase() === 'noun'){
                 text = 'a';
             }
             else {
                 text = 'an';
             }
 
-            return 'That\'s not ' + text + type +  ' you stupid fuck.';
+            return 'That\'s not ' + text + ' ' + type.toLowerCase() +  ' you stupid fuck.';
         };
 
         function includedPartofSpeech(array, part) {
             return _.any(array, function(item) {
-                return item.partOfSpeech === part;
+                return item.partOfSpeech === part.toLowerCase();
             });
         }
 
@@ -107,6 +107,9 @@ angular.module('awfulWordplayApp').controller('MainCtrl', [
 
                     if(!includedPartofSpeech(definitions, word.speech)) {
                         word.valid = false;
+                    }
+                    else {
+                        word.valid = true;
                     }
                 });
             });

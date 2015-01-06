@@ -8,7 +8,7 @@
         <div class="group" ng-repeat="form in wordForm">
             <span ng-if="form.valid" ng-bind="form.speech"></span>
             <span ng-if="!form.valid" class="error" ng-bind="errorType(form.speech)"></span>
-            <input type="text" ng-model="form.model" placeholder="{{form.placeholder}}" ng-class="{error: !form.valid"} />
+            <input type="text" ng-model="form.model" placeholder="{{form.placeholder}}" ng-class="{error: !form.valid}" />
         </div>
     </form>
 
