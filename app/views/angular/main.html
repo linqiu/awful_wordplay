@@ -2,15 +2,30 @@
     <h1>Awful Wordplay</h1>
     <h4 class="subtitle">Like that other game, except with terrible shit</h4>
 
-    <form name="wordPlay">
+    <form name="wordPlay" ng-if="showForm">
         <h3>Fill this shit out to play</h3>
 
-        <div class="group" ng-repeat="form in wordForm">
-            <span ng-if="form.valid" ng-bind="form.speech"></span>
-            <span ng-if="!form.valid" class="error" ng-bind="errorType(form.speech)"></span>
-            <input type="text" ng-model="form.model" placeholder="{{form.placeholder}}" ng-class="{error: !form.valid}" />
+        <div class="group">
+            <input-group ng-model="form" ng-repeat="form in wordForm"></input-group>
         </div>
     </form>
 
-    <button ng-bind="submitText()" ng-click="checkForm()" ng-disabled="!buttonReady()" class="btn" ng-class="{ready: buttonReady()}"></button>
+    <div class="story" ng-if="!showForm">
+        <h2>The <span ng-bind="city()"></span> Phantom</h2>
+        <div class="paragraph">
+            <span ng-bind="friendName()"></span> walked <span ng-bind="adverbOne()"></span> down a dingy <span ng-bind="city()"></span> alley. He hated this town, it always sent a <span ng-bind="adjectiveOne()"></span> shiver down his <span ng-bind="bodyPart()"></span>. Little did he know that the <span ng-bind="city()"></span> Phantom was quite literally tracing his footsteps.
+        </div>
+        <div class="paragraph">
+            "What was that!" <span ng-bind="friendName()"></span> exclaimed. He turned just in time to see the Phantom's leather coated fist come down hard across his face. <span ng-bind="friendName()"></span> stumbled backwards, falling hard into the brick wall.
+        </div>
+        <div class="paragraph">
+            Consciousness fading, the last thing <span ng-bind="friendName()"></span> could make out clearly was the phantom producing a long slender dick from his hip. He let out a <span ng-bind="adjectiveTwo()"></span> cackle and plunged the dick into <span ng-bind="friendName()"></span>'s stomach. <span ng-bind="friendName()"></span> gasped for air and squeezed out one final question.
+        </div>
+        <div class="paragraph">
+            "Why did I come to this fucking town?"
+        </div>
+    </div>
+
+    <button ng-if="showForm" ng-bind="submitText()" ng-click="checkForm()" ng-disabled="!buttonReady()" class="btn" ng-class="{ready: buttonReady()}"></button>
+    <button ng-if="!showForm" ng-click="resetForm()" class="btn ready">Play Again</button>
 </div>
